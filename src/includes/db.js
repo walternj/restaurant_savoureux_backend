@@ -1,5 +1,5 @@
 const  mongoose = require('mongoose')
-const {ATLAS_URI } = require('../../.env')
+const ATLAS_URI = process.env.ATLAS_URI
 
 mongoose.connect(ATLAS_URI, {
   useNewUrlParser: true,
