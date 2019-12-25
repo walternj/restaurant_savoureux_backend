@@ -24,7 +24,7 @@ const PlatsSchema = new mongoose.Schema({
 })
 
 PlatsSchema.virtual('photo_url').get(function() {
-  return `http://localhost:9000/files/${this.photo}`
+  return `process.env.BACKEND_URL || http://localhost:9000/files/${this.photo}`
 })
 
 module.exports = mongoose.model('Plats', PlatsSchema)

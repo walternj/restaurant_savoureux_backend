@@ -27,3 +27,4 @@ routes.put('/messages/:id', MessageController.update)
 routes.delete('/messages/:id', MessageController.destroy)
 
 module.exports = routes
+
