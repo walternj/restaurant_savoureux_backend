@@ -37,7 +37,8 @@ module.exports = {
   async index(req, res) {
     const data = await Plat.find({})
 
-    return res.json(data)
+    return res.json(data), res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
+
   },
 
   async update(req, res) {
