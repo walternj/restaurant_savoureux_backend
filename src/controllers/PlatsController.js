@@ -39,7 +39,7 @@ module.exports = {
 
     return (
       res.json(data), 
-      res.cookie({ Secure, SameSite=None })
+      res.cookie({ secure, samesite=false })
     )
 
   },
