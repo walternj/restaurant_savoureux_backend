@@ -49,8 +49,7 @@ io.on('connection', socket => {
 port = process.env.PORT || 9000;
 const corsOptions = {
   origin: ['https://restaurant-savoureux-frontend.herokuapp.com', 'https://restaurant-savoureux-admin.herokuapp.com'], 
-  samesite: false,
-  secure: false
+
 }
 app.use(cors(corsOptions))
 app.use(logger('dev'));
