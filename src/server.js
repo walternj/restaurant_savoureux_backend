@@ -3,13 +3,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 const path = require('path')
-const http = require('http')
+const https = require('https')
 const socketIO = require('socket.io')
 
 const routes = require('./routes')
 
 const app = express()
-const server = http.Server(app)
+const server = https.Server(app)
 const io = socketIO(server)
 
 require('./includes/db')
