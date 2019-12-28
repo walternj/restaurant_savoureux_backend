@@ -4,12 +4,14 @@ const logger = require('morgan');
 const cors = require('cors')
 const path = require('path')
 const http = require('http')
+const https = require('https')
 const socketIO = require('socket.io')
 
 const routes = require('./routes')
 
 const app = express()
 const server = http.Server(app)
+const serverHttps = https.Server(app)
 const io = socketIO(server)
 
 require('./includes/db')
@@ -61,3 +63,4 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
 app.use(routes)
 	
 server.listen(port)
+serverHttps.listen(port)
