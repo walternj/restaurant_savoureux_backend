@@ -4,18 +4,12 @@ const logger = require('morgan');
 const cors = require('cors')
 const path = require('path')
 const http = require('http')
-const https = require('https')
 const socketIO = require('socket.io')
 
 const routes = require('./routes')
 
 const app = express()
 const server = http.Server(app)
-const serverHttps = https.Server({
-	key: fs.readFileSync('key.pem'),
-	cert: fs.readFileSync('cert.pem')},
-	app
-)
 const io = socketIO(server)
 
 require('./includes/db')
@@ -54,7 +48,12 @@ io.on('connection', socket => {
 
 port = process.env.PORT || 9000;
 const corsOptions = {
-	origin: ['https://restaurant-savoureux-frontend.herokuapp.com', 'https://restaurant-savoureux-admin.herokuapp.com'],
+	origin: [
+		'https://restaurant-savoureux-frontend.herokuapp.com', 
+		'https://restaurant-savoureux-admin.herokuapp.com',
+		'http://restaurant-savoureux-frontend.herokuapp.com', 
+		'http://restaurant-savoureux-admin.herokuapp.com'
+	],
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }
 app.use(cors(corsOptions))
@@ -67,4 +66,3 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
 app.use(routes)
 	
 server.listen(port)
-serverHttps.listen(port)
