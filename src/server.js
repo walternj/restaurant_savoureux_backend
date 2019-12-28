@@ -55,8 +55,7 @@ const corsOptions = {
 		'http://restaurant-savoureux-admin.herokuapp.com'
 	],
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	SameSite=None,
-	Secure,
+
 }
 app.use(cors(corsOptions))
 app.use(function(req, res, next) {
