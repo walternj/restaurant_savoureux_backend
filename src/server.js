@@ -3,13 +3,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 const path = require('path')
-const https = require('https')
+const http = require('http')
 const socketIO = require('socket.io')
 
 const routes = require('./routes')
 
 const app = express()
-const server = https.Server(app)
+const server = http.Server(app)
 const io = socketIO(server)
 
 require('./includes/db')
@@ -50,7 +50,6 @@ port = process.env.PORT || 9000;
 const corsOptions = {
 	origin: ['https://restaurant-savoureux-frontend.herokuapp.com', 'https://restaurant-savoureux-admin.herokuapp.com'],
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	
 }
 app.use(cors(corsOptions))
 app.use(logger('dev'));
