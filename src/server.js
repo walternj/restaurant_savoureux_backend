@@ -11,7 +11,11 @@ const routes = require('./routes')
 
 const app = express()
 const server = http.Server(app)
-const serverHttps = https.Server(app)
+const serverHttps = https.Server({
+	key: fs.readFileSync('key.pem'),
+	cert: fs.readFileSync('cert.pem')},
+	app
+)
 const io = socketIO(server)
 
 require('./includes/db')
